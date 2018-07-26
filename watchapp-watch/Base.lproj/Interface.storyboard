@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14306.4" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch42" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14278.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14237"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller contentMode="scaleAspectFit" spacing="0.0" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="watchapp_watch" customModuleProvider="target">
+                    <items>
+                        <group width="1" alignment="center" layout="overlap" radius="0.0" id="SU2-bV-a5x">
+                            <items>
+                                <imageView width="0.90000000000000002" height="0.90000000000000002" alignment="center" verticalAlignment="center" contentMode="scaleAspectFit" id="g3z-pL-tU7"/>
+                                <imageView width="0.22500000000000001" height="0.22500000000000001" alignment="center" verticalAlignment="center" image="whatsapp-qr" contentMode="scaleAspectFit" id="Zw0-NY-ff3"/>
+                                <table alignment="left" id="pK8-F1-S6b">
+                                    <items>
+                                        <tableRow identifier="row" id="CPI-Kq-HWS" customClass="ChatRowController" customModule="watchapp_watch_Extension">
+                                            <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="cRy-3V-ngS">
+                                                <items>
+                                                    <group width="1" height="4" alignment="left" id="5Qt-gn-s2c"/>
+                                                    <group width="1" alignment="left" layout="vertical" id="ytU-M1-PBg">
+                                                        <items>
+                                                            <label alignment="left" text="Label" textAlignment="left" numberOfLines="0" id="LO9-gE-dTc">
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </label>
+                                                            <label alignment="left" text="Label" textAlignment="left" numberOfLines="0" id="l9l-44-v8A">
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <fontDescription key="font" type="system" pointSize="12"/>
+                                                            </label>
+                                                        </items>
+                                                    </group>
+                                                    <group width="1" height="4" alignment="left" id="aiM-EU-Qgc"/>
+                                                </items>
+                                                <color key="backgroundColor" red="0.1803921568627451" green="0.80000000000000004" blue="0.44313725490196076" alpha="1" colorSpace="calibratedRGB"/>
+                                            </group>
+                                            <connections>
+                                                <outlet property="backgroundGroup" destination="cRy-3V-ngS" id="t4z-7q-4q3"/>
+                                                <outlet property="label" destination="l9l-44-v8A" id="7NZ-k3-WyU"/>
+                                                <outlet property="titleLabel" destination="LO9-gE-dTc" id="sR9-BJ-4du"/>
+                                            </connections>
+                                        </tableRow>
+                                    </items>
+                                </table>
+                            </items>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </group>
+                    </items>
+                    <menu key="menu" id="PcE-wo-gqc">
+                        <items>
+                            <menuItem title="Refresh" icon="repeat" id="ZgO-eS-G0A">
+                                <connections>
+                                    <action selector="refresh" destination="AgC-eL-Hgc" id="Cr0-16-tiJ"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="backgroundGroup" destination="SU2-bV-a5x" id="9W7-8Y-diE"/>
+                        <outlet property="qrCodeImageView" destination="g3z-pL-tU7" id="uqJ-2J-JnC"/>
+                        <outlet property="table" destination="pK8-F1-S6b" id="mN7-l2-pSQ"/>
+                        <outlet property="whatsappIcon" destination="Zw0-NY-ff3" id="Tbg-kB-Pe3"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="98" y="345"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" numberOfLines="0" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                        <segue destination="eXb-UN-Cd0" kind="relationship" relationship="dynamicInteractiveNotificationInterface" id="mpB-YA-K8N"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="220" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="ZPc-GJ-vnh">
+            <objects>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="watchapp_watch" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="Niz-AI-uX2">
+            <objects>
+                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="watchapp_watch" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="345"/>
+        </scene>
+    </scenes>
+</document>
