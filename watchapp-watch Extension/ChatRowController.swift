@@ -11,8 +11,8 @@ import WatchKit
 import UIKit
 
 class ChatRowController: NSObject {
-    @IBOutlet weak var image: WKInterfaceImage!
     @IBOutlet weak var titleLabel: WKInterfaceLabel!
     @IBOutlet weak var label: WKInterfaceLabel!
     @IBOutlet weak var backgroundGroup: WKInterfaceGroup!
+    @IBOutlet weak var dateLabel: WKInterfaceLabel!
 }

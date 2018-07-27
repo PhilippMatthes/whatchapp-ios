@@ -11,8 +11,13 @@
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller contentMode="scaleAspectFit" spacing="0.0" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="watchapp_watch" customModuleProvider="target">
+                <controller contentMode="scaleAspectFit" spacing="0.0" fullScreen="YES" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="watchapp_watch" customModuleProvider="target">
                     <items>
+                        <group width="1" alignment="left" layout="vertical" spacing="0.0" id="Oe4-mc-6cY">
+                            <items>
+                                <group width="1" height="2" alignment="left" id="ZyU-Od-8Z1"/>
+                            </items>
+                        </group>
                         <group width="1" alignment="center" layout="overlap" radius="0.0" id="SU2-bV-a5x">
                             <items>
                                 <imageView width="0.90000000000000002" height="0.90000000000000002" alignment="center" verticalAlignment="center" contentMode="scaleAspectFit" id="g3z-pL-tU7"/>
@@ -25,10 +30,19 @@
                                                     <group width="1" height="4" alignment="left" id="5Qt-gn-s2c"/>
                                                     <group width="1" alignment="left" layout="vertical" id="ytU-M1-PBg">
                                                         <items>
-                                                            <label alignment="left" text="Label" textAlignment="left" numberOfLines="0" id="LO9-gE-dTc">
-                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </label>
-                                                            <label alignment="left" text="Label" textAlignment="left" numberOfLines="0" id="l9l-44-v8A">
+                                                            <group width="1" alignment="left" id="N5V-Ia-82c">
+                                                                <items>
+                                                                    <label width="0.59999999999999998" alignment="left" text="Chat" textAlignment="left" numberOfLines="0" id="LO9-gE-dTc">
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <fontDescription key="font" type="system" pointSize="12"/>
+                                                                    </label>
+                                                                    <label width="0.40000000000000002" alignment="right" text="Date" textAlignment="right" numberOfLines="0" id="dXk-Ya-UlH">
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <fontDescription key="font" type="system" pointSize="12"/>
+                                                                    </label>
+                                                                </items>
+                                                            </group>
+                                                            <label alignment="left" text="Message" textAlignment="left" numberOfLines="0" id="l9l-44-v8A">
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="font" type="system" pointSize="12"/>
                                                             </label>
@@ -40,6 +54,7 @@
                                             </group>
                                             <connections>
                                                 <outlet property="backgroundGroup" destination="cRy-3V-ngS" id="t4z-7q-4q3"/>
+                                                <outlet property="dateLabel" destination="dXk-Ya-UlH" id="lR2-eK-i4D"/>
                                                 <outlet property="label" destination="l9l-44-v8A" id="7NZ-k3-WyU"/>
                                                 <outlet property="titleLabel" destination="LO9-gE-dTc" id="sR9-BJ-4du"/>
                                             </connections>
@@ -67,7 +82,84 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="98" y="345"/>
+            <point key="canvasLocation" x="-86" y="305"/>
+        </scene>
+        <!--ChatLogViewController-->
+        <scene sceneID="iYJ-zk-iOs">
+            <objects>
+                <controller identifier="ChatLogViewController" id="etl-oh-gON" customClass="ChatLogViewController" customModule="watchapp_watch_Extension">
+                    <items>
+                        <table alignment="left" id="IlQ-cq-hLj">
+                            <items>
+                                <tableRow identifier="row" id="Y2D-sd-JFG" customClass="ContributionRowController" customModule="watchapp_watch_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="y1b-DM-dMY">
+                                        <items>
+                                            <group width="1" alignment="left" id="RWQ-R6-DMd">
+                                                <items>
+                                                    <label width="0.59999999999999998" alignment="left" numberOfLines="0" id="GDb-J5-JOW">
+                                                        <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                                        <fontDescription key="font" type="system" pointSize="12"/>
+                                                    </label>
+                                                    <label width="0.40000000000000002" alignment="right" textAlignment="right" numberOfLines="0" id="yZs-Uw-SGy">
+                                                        <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                                        <fontDescription key="font" type="system" pointSize="12"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                            <group width="1" alignment="left" hidden="YES" layout="vertical" radius="6" id="eva-oi-3Vo">
+                                                <items>
+                                                    <group width="1" alignment="left" id="NYD-Xl-xXp">
+                                                        <items>
+                                                            <label width="0.59999999999999998" alignment="left" numberOfLines="0" id="gob-oO-94Q">
+                                                                <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                                                <fontDescription key="font" type="system" pointSize="12"/>
+                                                            </label>
+                                                            <label width="0.40000000000000002" alignment="right" textAlignment="right" numberOfLines="0" id="Bbg-lU-gZO">
+                                                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                                                <fontDescription key="font" type="system" pointSize="12"/>
+                                                            </label>
+                                                        </items>
+                                                    </group>
+                                                    <label alignment="left" numberOfLines="0" id="aMU-vO-yUs">
+                                                        <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                                        <fontDescription key="font" type="system" pointSize="12"/>
+                                                    </label>
+                                                </items>
+                                                <color key="backgroundColor" red="0.72156862745098038" green="0.9137254901960784" blue="0.58039215686274503" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <edgeInsets key="margins" left="2" right="2" top="4" bottom="4"/>
+                                            </group>
+                                            <group width="1" alignment="left" id="wZn-gY-6bH">
+                                                <items>
+                                                    <label alignment="left" numberOfLines="0" id="TFI-Ur-OAO">
+                                                        <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                                        <fontDescription key="font" type="system" pointSize="12"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                        </items>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <edgeInsets key="margins" left="4" right="4" top="4" bottom="4"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="authorLabel" destination="GDb-J5-JOW" id="IG9-S6-O5a"/>
+                                        <outlet property="authorUserNameLabel" destination="yZs-Uw-SGy" id="usc-dc-hwq"/>
+                                        <outlet property="backgroundGroup" destination="y1b-DM-dMY" id="aAj-TR-6wd"/>
+                                        <outlet property="citationAuthorLabel" destination="gob-oO-94Q" id="BPX-a4-fOz"/>
+                                        <outlet property="citationAuthorUserNameLabel" destination="Bbg-lU-gZO" id="4ON-tn-fPK"/>
+                                        <outlet property="citationBackgroundGroup" destination="eva-oi-3Vo" id="Oqg-VS-NV0"/>
+                                        <outlet property="citationMessageLabel" destination="aMU-vO-yUs" id="Yub-Q3-aqd"/>
+                                        <outlet property="messageLabel" destination="TFI-Ur-OAO" id="8Sn-Wu-wJP"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="table" destination="IlQ-cq-hLj" id="qlC-Mq-awq"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="176" y="305"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
