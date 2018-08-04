@@ -9,6 +9,23 @@
 import Foundation
 import UIKit
 
+struct QueuedMessage: Codable, Equatable {
+    let chatName: String
+    let text: String
+    var sent = false
+    var pending = false
+    
+    init(chatName: String, text: String) {
+        self.chatName = chatName
+        self.text = text
+    }
+    
+    private enum CodingKeys: String, CodingKey{
+        case chatName = "chatName"
+        case text = "text"
+    }
+}
+
 struct ChatMessage: Codable, Equatable {
     let own: Bool
     let children: [PartialMessage]

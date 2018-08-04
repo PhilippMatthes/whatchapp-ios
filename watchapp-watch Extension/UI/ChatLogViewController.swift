@@ -88,6 +88,9 @@ extension ChatLogViewController: WCSessionDelegate {
         }
         if let blobImage = message["blobImage"] as? Data {
             self.receivedBlobImage(blobImage)
+            DispatchQueue.main.async {
+                self.setTitle("Received images")
+            }
             return
         }
         guard
@@ -98,6 +101,9 @@ extension ChatLogViewController: WCSessionDelegate {
             self.messages = messages
             showMessages()
             WKInterfaceDevice().play(.click)
+            DispatchQueue.main.async {
+                self.setTitle(self.chat)
+            }
         }
     }
     

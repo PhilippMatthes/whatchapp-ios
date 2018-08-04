@@ -7,14 +7,99 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		024AFA6140128D6FD5978DCF /* Pods_watchapp_watch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C43BD198AC3DFFAEEE87FB66 /* Pods_watchapp_watch.framework */; };
+		B399623219A026EAB24886C2 /* Pods_watchapp_watch_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7ABD40BB3010E58E0D53899 /* Pods_watchapp_watch_Extension.framework */; };
+		BE1692F72104A8F400C30496 /* jquery.min.js in Resources */ = {isa = PBXBuildFile; fileRef = BE1692F62104A8F400C30496 /* jquery.min.js */; };
+		BE1693012105F47A00C30496 /* ChatRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1693002105F47A00C30496 /* ChatRowController.swift */; };
+		BE1C4008210A2B5C0045008B /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1C4007210A2B5C0045008B /* Storage.swift */; };
+		BE1C400C210A839F0045008B /* ChatLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1C400B210A839F0045008B /* ChatLogViewController.swift */; };
+		BE421433210613AF0037EE77 /* WKInterfaceImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE421432210613AF0037EE77 /* WKInterfaceImageExtension.swift */; };
+		BE8521F8210A0E3300B07DC5 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8521F7210A0E3300B07DC5 /* Models.swift */; };
+		BE8521F9210A0E4500B07DC5 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8521F7210A0E3300B07DC5 /* Models.swift */; };
+		BE8521FB210A13BC00B07DC5 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8521FA210A13BC00B07DC5 /* DateExtension.swift */; };
+		BE8521FC210A159400B07DC5 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8521FA210A13BC00B07DC5 /* DateExtension.swift */; };
 		BE8AEF3F21046C7A00E9D86D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8AEF3E21046C7A00E9D86D /* AppDelegate.swift */; };
 		BE8AEF4121046C7A00E9D86D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8AEF4021046C7A00E9D86D /* ViewController.swift */; };
 		BE8AEF4421046C7A00E9D86D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE8AEF4221046C7A00E9D86D /* Main.storyboard */; };
 		BE8AEF4621046C7B00E9D86D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE8AEF4521046C7B00E9D86D /* Assets.xcassets */; };
 		BE8AEF4921046C7B00E9D86D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE8AEF4721046C7B00E9D86D /* LaunchScreen.storyboard */; };
+		BE8AEF5621046D4800E9D86D /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE8AEF5421046D4800E9D86D /* Interface.storyboard */; };
+		BE8AEF5821046D4800E9D86D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE8AEF5721046D4800E9D86D /* Assets.xcassets */; };
+		BE8AEF5F21046D4800E9D86D /* watchapp-watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BE8AEF5E21046D4800E9D86D /* watchapp-watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BE8AEF6421046D4800E9D86D /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8AEF6321046D4800E9D86D /* InterfaceController.swift */; };
+		BE8AEF6621046D4800E9D86D /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8AEF6521046D4800E9D86D /* ExtensionDelegate.swift */; };
+		BE8AEF6821046D4800E9D86D /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8AEF6721046D4800E9D86D /* NotificationController.swift */; };
+		BE8AEF6A21046D4800E9D86D /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8AEF6921046D4800E9D86D /* ComplicationController.swift */; };
+		BE8AEF6C21046D4900E9D86D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE8AEF6B21046D4900E9D86D /* Assets.xcassets */; };
+		BE8AEF7121046D4900E9D86D /* watchapp-watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = BE8AEF5221046D4800E9D86D /* watchapp-watch.app */; };
+		BE9ADD0C210A860B0048BB60 /* ContributionRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9ADD0B210A860B0048BB60 /* ContributionRowController.swift */; };
+		BEA694EB2114EBC8002AF6BF /* ClassificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA694EA2114EBC8002AF6BF /* ClassificationService.swift */; };
+		BEA694ED2114EC09002AF6BF /* Sentiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA694EC2114EC09002AF6BF /* Sentiment.swift */; };
+		BEA694F42114ED24002AF6BF /* SentimentPolarity.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BEA694F32114ED24002AF6BF /* SentimentPolarity.mlmodel */; };
+		BEE31858210AF3F400480897 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE31857210AF3F400480897 /* UIColorExtension.swift */; };
+		BEF6D74121105BCF00B6B731 /* Compression.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF6D74021105BCF00B6B731 /* Compression.swift */; };
+		BEF6D74221105BD900B6B731 /* Compression.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF6D74021105BCF00B6B731 /* Compression.swift */; };
+		BEF6D747211064AA00B6B731 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF6D746211064AA00B6B731 /* UIImageExtension.swift */; };
+		BEF6D748211064D100B6B731 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF6D746211064AA00B6B731 /* UIImageExtension.swift */; };
+		BEF6D74A2110688700B6B731 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF6D7492110688700B6B731 /* ArrayExtension.swift */; };
+		BEF6D74B2110688900B6B731 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF6D7492110688700B6B731 /* ArrayExtension.swift */; };
+		C3AD4206C2BBD4FA96018145 /* Pods_whatchapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFCA72B40F7C1965BEE65C7F /* Pods_whatchapp.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		BE8AEF6021046D4800E9D86D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE8AEF3321046C7A00E9D86D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BE8AEF5D21046D4800E9D86D;
+			remoteInfo = "watchapp-watch Extension";
+		};
+		BE8AEF6F21046D4900E9D86D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE8AEF3321046C7A00E9D86D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BE8AEF5121046D4800E9D86D;
+			remoteInfo = "watchapp-watch";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BE8AEF7521046D4900E9D86D /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				BE8AEF5F21046D4800E9D86D /* watchapp-watch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE8AEF7921046D4900E9D86D /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				BE8AEF7121046D4900E9D86D /* watchapp-watch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		4B0A9421E46AAF17F02C0CCC /* Pods-watchapp-watch Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchapp-watch Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watchapp-watch Extension/Pods-watchapp-watch Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		61846EF701FA5D43C61CAF3D /* Pods-watchapp-watch Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchapp-watch Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-watchapp-watch Extension/Pods-watchapp-watch Extension.release.xcconfig"; sourceTree = "<group>"; };
+		6C798B53DE0D197A71D84E81 /* Pods-whatchapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whatchapp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-whatchapp/Pods-whatchapp.debug.xcconfig"; sourceTree = "<group>"; };
+		BDF8E59E2E7BA543462C8361 /* Pods-whatchapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whatchapp.release.xcconfig"; path = "Pods/Target Support Files/Pods-whatchapp/Pods-whatchapp.release.xcconfig"; sourceTree = "<group>"; };
+		BE1692F62104A8F400C30496 /* jquery.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.min.js; sourceTree = "<group>"; };
+		BE1693002105F47A00C30496 /* ChatRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRowController.swift; sourceTree = "<group>"; };
+		BE1C4007210A2B5C0045008B /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		BE1C400B210A839F0045008B /* ChatLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogViewController.swift; sourceTree = "<group>"; };
+		BE421432210613AF0037EE77 /* WKInterfaceImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKInterfaceImageExtension.swift; sourceTree = "<group>"; };
+		BE8521F7210A0E3300B07DC5 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		BE8521FA210A13BC00B07DC5 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		BE8AEF3B21046C7A00E9D86D /* whatchapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = whatchapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE8AEF3E21046C7A00E9D86D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE8AEF4021046C7A00E9D86D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,24 +107,93 @@
 		BE8AEF4521046C7B00E9D86D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE8AEF4821046C7B00E9D86D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE8AEF4A21046C7B00E9D86D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE8AEF5221046D4800E9D86D /* watchapp-watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "watchapp-watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE8AEF5521046D4800E9D86D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		BE8AEF5721046D4800E9D86D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BE8AEF5921046D4800E9D86D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE8AEF5E21046D4800E9D86D /* watchapp-watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "watchapp-watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE8AEF6321046D4800E9D86D /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		BE8AEF6521046D4800E9D86D /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		BE8AEF6721046D4800E9D86D /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		BE8AEF6921046D4800E9D86D /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		BE8AEF6B21046D4900E9D86D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BE8AEF6D21046D4900E9D86D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE8AEF6E21046D4900E9D86D /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		BE9ADD0B210A860B0048BB60 /* ContributionRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContributionRowController.swift; sourceTree = "<group>"; };
+		BEA694EA2114EBC8002AF6BF /* ClassificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationService.swift; sourceTree = "<group>"; };
+		BEA694EC2114EC09002AF6BF /* Sentiment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sentiment.swift; sourceTree = "<group>"; };
+		BEA694F32114ED24002AF6BF /* SentimentPolarity.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SentimentPolarity.mlmodel; sourceTree = "<group>"; };
+		BEE31857210AF3F400480897 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		BEF6D74021105BCF00B6B731 /* Compression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Compression.swift; sourceTree = "<group>"; };
+		BEF6D746211064AA00B6B731 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		BEF6D7492110688700B6B731 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		C0964F59E3A6B14A72F4DD6F /* Pods-watchapp-watch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchapp-watch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watchapp-watch/Pods-watchapp-watch.debug.xcconfig"; sourceTree = "<group>"; };
+		C43BD198AC3DFFAEEE87FB66 /* Pods_watchapp_watch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_watchapp_watch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFCA72B40F7C1965BEE65C7F /* Pods_whatchapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_whatchapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7ABD40BB3010E58E0D53899 /* Pods_watchapp_watch_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_watchapp_watch_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFB74DF693B82610BD38562D /* Pods-watchapp-watch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchapp-watch.release.xcconfig"; path = "Pods/Target Support Files/Pods-watchapp-watch/Pods-watchapp-watch.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4AD0B442F1E01C75D151F68F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				024AFA6140128D6FD5978DCF /* Pods_watchapp_watch.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BE8AEF3821046C7A00E9D86D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3AD4206C2BBD4FA96018145 /* Pods_whatchapp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE8AEF5B21046D4800E9D86D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B399623219A026EAB24886C2 /* Pods_watchapp_watch_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		468085495BC74DC60A3796A5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C43BD198AC3DFFAEEE87FB66 /* Pods_watchapp_watch.framework */,
+				E7ABD40BB3010E58E0D53899 /* Pods_watchapp_watch_Extension.framework */,
+				DFCA72B40F7C1965BEE65C7F /* Pods_whatchapp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B94D1BA9AB3EDFE894D457AD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C0964F59E3A6B14A72F4DD6F /* Pods-watchapp-watch.debug.xcconfig */,
+				FFB74DF693B82610BD38562D /* Pods-watchapp-watch.release.xcconfig */,
+				4B0A9421E46AAF17F02C0CCC /* Pods-watchapp-watch Extension.debug.xcconfig */,
+				61846EF701FA5D43C61CAF3D /* Pods-watchapp-watch Extension.release.xcconfig */,
+				6C798B53DE0D197A71D84E81 /* Pods-whatchapp.debug.xcconfig */,
+				BDF8E59E2E7BA543462C8361 /* Pods-whatchapp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		BE8AEF3221046C7A00E9D86D = {
 			isa = PBXGroup;
 			children = (
 				BE8AEF3D21046C7A00E9D86D /* whatchapp */,
+				BE8AEF5321046D4800E9D86D /* watchapp-watch */,
+				BE8AEF6221046D4800E9D86D /* watchapp-watch Extension */,
 				BE8AEF3C21046C7A00E9D86D /* Products */,
+				B94D1BA9AB3EDFE894D457AD /* Pods */,
+				468085495BC74DC60A3796A5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -47,6 +201,8 @@
 			isa = PBXGroup;
 			children = (
 				BE8AEF3B21046C7A00E9D86D /* whatchapp.app */,
+				BE8AEF5221046D4800E9D86D /* watchapp-watch.app */,
+				BE8AEF5E21046D4800E9D86D /* watchapp-watch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -54,14 +210,93 @@
 		BE8AEF3D21046C7A00E9D86D /* whatchapp */ = {
 			isa = PBXGroup;
 			children = (
-				BE8AEF3E21046C7A00E9D86D /* AppDelegate.swift */,
-				BE8AEF4021046C7A00E9D86D /* ViewController.swift */,
+				BE1692F62104A8F400C30496 /* jquery.min.js */,
+				BEA694F12114ECEC002AF6BF /* Extensions */,
+				BEA694F22114ED01002AF6BF /* UI */,
+				BE8521F7210A0E3300B07DC5 /* Models.swift */,
+				BEF6D74021105BCF00B6B731 /* Compression.swift */,
+				BE1C4007210A2B5C0045008B /* Storage.swift */,
 				BE8AEF4221046C7A00E9D86D /* Main.storyboard */,
 				BE8AEF4521046C7B00E9D86D /* Assets.xcassets */,
 				BE8AEF4721046C7B00E9D86D /* LaunchScreen.storyboard */,
 				BE8AEF4A21046C7B00E9D86D /* Info.plist */,
 			);
 			path = whatchapp;
+			sourceTree = "<group>";
+		};
+		BE8AEF5321046D4800E9D86D /* watchapp-watch */ = {
+			isa = PBXGroup;
+			children = (
+				BE8AEF5421046D4800E9D86D /* Interface.storyboard */,
+				BE8AEF5721046D4800E9D86D /* Assets.xcassets */,
+				BE8AEF5921046D4800E9D86D /* Info.plist */,
+			);
+			path = "watchapp-watch";
+			sourceTree = "<group>";
+		};
+		BE8AEF6221046D4800E9D86D /* watchapp-watch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				BEA694F32114ED24002AF6BF /* SentimentPolarity.mlmodel */,
+				BEA694EE2114ECC0002AF6BF /* Sentiment */,
+				BEA694EF2114ECD5002AF6BF /* UI */,
+				BEA694F02114ECDC002AF6BF /* Extensions */,
+				BE8AEF6B21046D4900E9D86D /* Assets.xcassets */,
+				BE8AEF6D21046D4900E9D86D /* Info.plist */,
+				BE8AEF6E21046D4900E9D86D /* PushNotificationPayload.apns */,
+			);
+			path = "watchapp-watch Extension";
+			sourceTree = "<group>";
+		};
+		BEA694EE2114ECC0002AF6BF /* Sentiment */ = {
+			isa = PBXGroup;
+			children = (
+				BEA694EA2114EBC8002AF6BF /* ClassificationService.swift */,
+				BEA694EC2114EC09002AF6BF /* Sentiment.swift */,
+			);
+			path = Sentiment;
+			sourceTree = "<group>";
+		};
+		BEA694EF2114ECD5002AF6BF /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				BE8AEF6321046D4800E9D86D /* InterfaceController.swift */,
+				BE1C400B210A839F0045008B /* ChatLogViewController.swift */,
+				BE8AEF6521046D4800E9D86D /* ExtensionDelegate.swift */,
+				BE8AEF6721046D4800E9D86D /* NotificationController.swift */,
+				BE8AEF6921046D4800E9D86D /* ComplicationController.swift */,
+				BE1693002105F47A00C30496 /* ChatRowController.swift */,
+				BE9ADD0B210A860B0048BB60 /* ContributionRowController.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		BEA694F02114ECDC002AF6BF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BEE31857210AF3F400480897 /* UIColorExtension.swift */,
+				BE421432210613AF0037EE77 /* WKInterfaceImageExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BEA694F12114ECEC002AF6BF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BEF6D746211064AA00B6B731 /* UIImageExtension.swift */,
+				BEF6D7492110688700B6B731 /* ArrayExtension.swift */,
+				BE8521FA210A13BC00B07DC5 /* DateExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BEA694F22114ED01002AF6BF /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				BE8AEF3E21046C7A00E9D86D /* AppDelegate.swift */,
+				BE8AEF4021046C7A00E9D86D /* ViewController.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,18 +306,59 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BE8AEF4D21046C7B00E9D86D /* Build configuration list for PBXNativeTarget "whatchapp" */;
 			buildPhases = (
+				EC9B1CA18FE5FFBB5711FCFE /* [CP] Check Pods Manifest.lock */,
 				BE8AEF3721046C7A00E9D86D /* Sources */,
 				BE8AEF3821046C7A00E9D86D /* Frameworks */,
 				BE8AEF3921046C7A00E9D86D /* Resources */,
+				BE8AEF7921046D4900E9D86D /* Embed Watch Content */,
+				47122CC22CAC1AE3331DAD7C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BE8AEF7021046D4900E9D86D /* PBXTargetDependency */,
 			);
 			name = whatchapp;
 			productName = whatchapp;
 			productReference = BE8AEF3B21046C7A00E9D86D /* whatchapp.app */;
 			productType = "com.apple.product-type.application";
+		};
+		BE8AEF5121046D4800E9D86D /* watchapp-watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE8AEF7621046D4900E9D86D /* Build configuration list for PBXNativeTarget "watchapp-watch" */;
+			buildPhases = (
+				71660C1BA62CDBC2EF47C16D /* [CP] Check Pods Manifest.lock */,
+				BE8AEF5021046D4800E9D86D /* Resources */,
+				BE8AEF7521046D4900E9D86D /* Embed App Extensions */,
+				4AD0B442F1E01C75D151F68F /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BE8AEF6121046D4800E9D86D /* PBXTargetDependency */,
+			);
+			name = "watchapp-watch";
+			productName = "watchapp-watch";
+			productReference = BE8AEF5221046D4800E9D86D /* watchapp-watch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		BE8AEF5D21046D4800E9D86D /* watchapp-watch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE8AEF7221046D4900E9D86D /* Build configuration list for PBXNativeTarget "watchapp-watch Extension" */;
+			buildPhases = (
+				D1FA22A5A5688A1ECB61D071 /* [CP] Check Pods Manifest.lock */,
+				BE8AEF5A21046D4800E9D86D /* Sources */,
+				BE8AEF5B21046D4800E9D86D /* Frameworks */,
+				BE8AEF5C21046D4800E9D86D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "watchapp-watch Extension";
+			productName = "watchapp-watch Extension";
+			productReference = BE8AEF5E21046D4800E9D86D /* watchapp-watch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -95,6 +371,17 @@
 				ORGANIZATIONNAME = "Philipp Matthes";
 				TargetAttributes = {
 					BE8AEF3A21046C7A00E9D86D = {
+						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+					BE8AEF5121046D4800E9D86D = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					BE8AEF5D21046D4800E9D86D = {
 						CreatedOnToolsVersion = 10.0;
 					};
 				};
@@ -113,6 +400,8 @@
 			projectRoot = "";
 			targets = (
 				BE8AEF3A21046C7A00E9D86D /* whatchapp */,
+				BE8AEF5121046D4800E9D86D /* watchapp-watch */,
+				BE8AEF5D21046D4800E9D86D /* watchapp-watch Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -123,24 +412,164 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE8AEF4921046C7B00E9D86D /* LaunchScreen.storyboard in Resources */,
+				BE1692F72104A8F400C30496 /* jquery.min.js in Resources */,
 				BE8AEF4621046C7B00E9D86D /* Assets.xcassets in Resources */,
 				BE8AEF4421046C7A00E9D86D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BE8AEF5021046D4800E9D86D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE8AEF5821046D4800E9D86D /* Assets.xcassets in Resources */,
+				BE8AEF5621046D4800E9D86D /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE8AEF5C21046D4800E9D86D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE8AEF6C21046D4900E9D86D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		47122CC22CAC1AE3331DAD7C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-whatchapp/Pods-whatchapp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Material/Material.framework",
+				"${BUILT_PRODUCTS_DIR}/Motion/Motion.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Material.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Motion.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-whatchapp/Pods-whatchapp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		71660C1BA62CDBC2EF47C16D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-watchapp-watch-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D1FA22A5A5688A1ECB61D071 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-watchapp-watch Extension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EC9B1CA18FE5FFBB5711FCFE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-whatchapp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BE8AEF3721046C7A00E9D86D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEF6D74121105BCF00B6B731 /* Compression.swift in Sources */,
+				BE8521F8210A0E3300B07DC5 /* Models.swift in Sources */,
+				BEF6D747211064AA00B6B731 /* UIImageExtension.swift in Sources */,
+				BEF6D74A2110688700B6B731 /* ArrayExtension.swift in Sources */,
+				BE8521FB210A13BC00B07DC5 /* DateExtension.swift in Sources */,
 				BE8AEF4121046C7A00E9D86D /* ViewController.swift in Sources */,
 				BE8AEF3F21046C7A00E9D86D /* AppDelegate.swift in Sources */,
+				BE1C4008210A2B5C0045008B /* Storage.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE8AEF5A21046D4800E9D86D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE8AEF6821046D4800E9D86D /* NotificationController.swift in Sources */,
+				BE8521FC210A159400B07DC5 /* DateExtension.swift in Sources */,
+				BE421433210613AF0037EE77 /* WKInterfaceImageExtension.swift in Sources */,
+				BEA694EB2114EBC8002AF6BF /* ClassificationService.swift in Sources */,
+				BEA694ED2114EC09002AF6BF /* Sentiment.swift in Sources */,
+				BE8AEF6A21046D4800E9D86D /* ComplicationController.swift in Sources */,
+				BE1693012105F47A00C30496 /* ChatRowController.swift in Sources */,
+				BE8AEF6621046D4800E9D86D /* ExtensionDelegate.swift in Sources */,
+				BEF6D74221105BD900B6B731 /* Compression.swift in Sources */,
+				BE1C400C210A839F0045008B /* ChatLogViewController.swift in Sources */,
+				BE8AEF6421046D4800E9D86D /* InterfaceController.swift in Sources */,
+				BEA694F42114ED24002AF6BF /* SentimentPolarity.mlmodel in Sources */,
+				BEF6D748211064D100B6B731 /* UIImageExtension.swift in Sources */,
+				BEE31858210AF3F400480897 /* UIColorExtension.swift in Sources */,
+				BEF6D74B2110688900B6B731 /* ArrayExtension.swift in Sources */,
+				BE9ADD0C210A860B0048BB60 /* ContributionRowController.swift in Sources */,
+				BE8521F9210A0E4500B07DC5 /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BE8AEF6121046D4800E9D86D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BE8AEF5D21046D4800E9D86D /* watchapp-watch Extension */;
+			targetProxy = BE8AEF6021046D4800E9D86D /* PBXContainerItemProxy */;
+		};
+		BE8AEF7021046D4900E9D86D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BE8AEF5121046D4800E9D86D /* watchapp-watch */;
+			targetProxy = BE8AEF6F21046D4900E9D86D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		BE8AEF4221046C7A00E9D86D /* Main.storyboard */ = {
@@ -157,6 +586,14 @@
 				BE8AEF4821046C7B00E9D86D /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		BE8AEF5421046D4800E9D86D /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE8AEF5521046D4800E9D86D /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -280,6 +717,7 @@
 		};
 		BE8AEF4E21046C7B00E9D86D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C798B53DE0D197A71D84E81 /* Pods-whatchapp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +736,7 @@
 		};
 		BE8AEF4F21046C7B00E9D86D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BDF8E59E2E7BA543462C8361 /* Pods-whatchapp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -311,6 +750,92 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BE8AEF7321046D4900E9D86D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B0A9421E46AAF17F02C0CCC /* Pods-watchapp-watch Extension.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S36925NV4E;
+				INFOPLIST_FILE = "watchapp-watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.philippmatthes.whatchapp.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.0;
+			};
+			name = Debug;
+		};
+		BE8AEF7421046D4900E9D86D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 61846EF701FA5D43C61CAF3D /* Pods-watchapp-watch Extension.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S36925NV4E;
+				INFOPLIST_FILE = "watchapp-watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.philippmatthes.whatchapp.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.0;
+			};
+			name = Release;
+		};
+		BE8AEF7721046D4900E9D86D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0964F59E3A6B14A72F4DD6F /* Pods-watchapp-watch.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S36925NV4E;
+				IBSC_MODULE = watchapp_watch_Extension;
+				INFOPLIST_FILE = "watchapp-watch/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.philippmatthes.whatchapp.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.0;
+			};
+			name = Debug;
+		};
+		BE8AEF7821046D4900E9D86D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FFB74DF693B82610BD38562D /* Pods-watchapp-watch.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S36925NV4E;
+				IBSC_MODULE = watchapp_watch_Extension;
+				INFOPLIST_FILE = "watchapp-watch/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.philippmatthes.whatchapp.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.0;
 			};
 			name = Release;
 		};
@@ -331,6 +856,24 @@
 			buildConfigurations = (
 				BE8AEF4E21046C7B00E9D86D /* Debug */,
 				BE8AEF4F21046C7B00E9D86D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BE8AEF7221046D4900E9D86D /* Build configuration list for PBXNativeTarget "watchapp-watch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE8AEF7321046D4900E9D86D /* Debug */,
+				BE8AEF7421046D4900E9D86D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BE8AEF7621046D4900E9D86D /* Build configuration list for PBXNativeTarget "watchapp-watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE8AEF7721046D4900E9D86D /* Debug */,
+				BE8AEF7821046D4900E9D86D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

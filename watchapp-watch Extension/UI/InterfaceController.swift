@@ -32,7 +32,6 @@ class InterfaceController: WKInterfaceController {
     }
     
     @IBAction func refresh() {
-        DispatchQueue.main.async{self.setTitle("Communicating...")}
         WCSession.default.sendMessage(["request": "data"], replyHandler: {
             (response) -> Void in
             self.session(WCSession.default, didReceiveMessage: response, replyHandler: self.standardReplyHandler)
@@ -75,7 +74,7 @@ class InterfaceController: WKInterfaceController {
                 let lastUpdate = try! JSONDecoder().decode(ChatUpdate.self, from: lastUpdateData)
                 self.conversations = lastUpdate.chats
                 DispatchQueue.main.async {
-                    self.setTitle("\(lastUpdate.timeAgo())")
+                    self.setTitle("↻ \(lastUpdate.timeAgo())")
                 }
             }
         }
@@ -99,7 +98,7 @@ class InterfaceController: WKInterfaceController {
             showConversations()
         }
         WKInterfaceDevice().play(.click)
-        DispatchQueue.main.async{self.setTitle("Just now")}
+        DispatchQueue.main.async{self.setTitle("↻ Just now")}
         
         let data = try! JSONEncoder().encode(update)
         UserDefaults.standard.set(data, forKey: "update")

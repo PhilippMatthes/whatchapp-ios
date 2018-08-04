@@ -26,8 +26,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var viewController: ViewController?
     
     var sentBlobImages = [CompressedBlobImage]()
+    var queuedMessages = [QueuedMessage]()
+    var config: WKWebViewConfiguration?
     
     func downloadConfig(handler: @escaping (WKWebViewConfiguration) -> ()) {
+        
+        if let config = self.config {
+            handler(config)
+            return
+        }
+        
         DispatchQueue.main.async {
             let config = WKWebViewConfiguration()
             
@@ -38,26 +46,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Alamofire.request("https://gist.githubusercontent.com/PhilippMatthes/2ab484dbf131f782f05a64822d99322c/raw/whatsapp-web-scraping.js").responseString {
                 response in
                 DispatchQueue.main.async {
-                    var infiny: WKUserScript
-                    if let infinyContent = response.result.value {
-                        infiny = WKUserScript(source: infinyContent, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
-                        NSLog("Infiny was downloaded: \(infinyContent.count) symbols")
-                    } else {
-                        let infinyURL = Bundle.main.path(forResource: "infiny", ofType: "js")!
-                        let infinyContent = try! String(contentsOfFile: infinyURL, encoding: String.Encoding.utf8)
-                        infiny = WKUserScript(source: infinyContent, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
-                        NSLog("Infiny could not be downloaded")
+                    guard let infinyContent = response.result.value else {
+                        self.downloadConfig(handler: handler)
+                        return
                     }
+                    let infiny = WKUserScript(source: infinyContent, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
+                    NSLog("Infiny was downloaded: \(infinyContent.count) symbols")
+                    
                     config.userContentController.addUserScript(jquery)
                     config.userContentController.addUserScript(infiny)
                     
                     config.userContentController.add(self, name: "blobToBase64Callback")
                     config.userContentController.add(self, name: "domChangedCallback")
                     
+                    config.suppressesIncrementalRendering = true
+                    
+                    self.config = config
                     handler(config)
                 }
             }
         }
+    }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        send(status: "App terminated")
     }
     
     var standardReplyHandler: (([String: Any]) -> Void) = {
@@ -109,17 +121,8 @@ extension AppDelegate: WCSessionDelegate {
             self.chat = chatName
         }
         
-        if let text = message["sendText"] as? String, let chatName = self.chat {
-            DispatchQueue.main.async {
-                self.webView?.evaluateJavaScript("sendMessage('\(text)', '\(chatName)');") {
-                    result, error in
-                    guard
-                        error == nil,
-                        let success = result as? Bool
-                    else {return}
-                    replyHandler(["sendTextSuccess": success])
-                }
-            }
+        if let data = message["sendText"] as? Data, let queuedMessage = try? JSONDecoder().decode(QueuedMessage.self, from: data){
+            self.queuedMessages.append(queuedMessage)
         }
         
         self.start()
@@ -134,7 +137,7 @@ extension AppDelegate: WKScriptMessageHandler {
     func start() {
         if webView == nil {
             self.send(status: "Starting browser...")
-            let frame = CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height)
+            let frame = CGRect(x: 0, y: 0, width: 1, height: 1)
             self.downloadConfig() {
                 config in
                 DispatchQueue.main.async {
@@ -188,7 +191,7 @@ extension AppDelegate: WKScriptMessageHandler {
             else {return}
         if let result = result as? Bool {
             if result {
-                WCSession.default.sendMessage(["status": "Logged back in..."], replyHandler: standardReplyHandler, errorHandler: standardErrorHandler)
+                send(status: "Logged back in...")
                 print("Was logged in on another device, logged back in.")
             }
         }
@@ -283,6 +286,23 @@ extension AppDelegate: WKScriptMessageHandler {
                 self.webView?.evaluateJavaScript("allVisibleMessages();") {
                     (result, error) in
                     self.handleAllVisibleMessages(result, error)
+                }
+                for (i, queuedMessage) in self.queuedMessages.enumerated() {
+                    if !queuedMessage.sent && !queuedMessage.pending {
+                        self.queuedMessages[i].pending = true
+                        self.webView?.evaluateJavaScript("sendMessage('\(queuedMessage.text)', '\(queuedMessage.chatName)');") {
+                            result, error in
+                            self.queuedMessages[i].pending = false
+                            guard
+                                error == nil,
+                                let success = result as? Bool
+                            else {return}
+                            if success {
+                                self.queuedMessages[i].sent = true
+                                self.send(status: "Sent to \(queuedMessage.chatName)")
+                            }
+                        }
+                    }
                 }
             }
         }
