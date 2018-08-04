@@ -7,78 +7,100 @@
 //
 
 import Foundation
+import UIKit
 
-struct Contribution: Codable, Equatable {
-    let message: Message
+struct ChatMessage: Codable, Equatable {
     let own: Bool
-    let quote: Quote
-    let author: Author
+    let children: [PartialMessage]
     
     private enum CodingKeys: String, CodingKey {
-        case message = "message"
         case own = "own"
-        case quote = "quote"
-        case author = "author"
+        case children = "children"
     }
 }
 
-struct Message: Codable, Equatable {
-    let caption: String?
-    let message: String?
-    let system: String?
+struct BlobImage: Codable, Equatable {
+    let blobUrl: String
+    let base64raw: String
     
     private enum CodingKeys: String, CodingKey {
-        case caption = "caption"
-        case message = "message"
-        case system = "system"
-    }
-}
-
-struct Quote: Codable, Equatable {
-    let message: String?
-    let author: Author
-    
-    private enum CodingKeys: String, CodingKey {
-        case message = "message"
-        case author = "author"
-    }
-}
-
-struct Author: Codable, Equatable {
-    let number: String?
-    let numberColor: String?
-    let name: String?
-    let contact: String?
-    let contactColor: String?
-    
-    private enum CodingKeys: String, CodingKey {
-        case number = "number"
-        case numberColor = "numberColor"
-        case name = "name"
-        case contact = "contact"
-        case contactColor = "contactColor"
+        case blobUrl = "blobUrl"
+        case base64raw = "base64"
     }
     
-    func computedName() -> String {
-        var name = self.contact ?? ""
-        name += self.name ?? ""
-        if let number = self.number {
-            name += " \(number)"
+    func rendered() -> UIImage? {
+        let componentsPNG = base64raw.components(separatedBy: "data:image/png;base64,")
+        let componentsJPEG = base64raw.components(separatedBy: "data:image/jpeg;base64,")
+        var base64: String
+        if componentsPNG.count == 2 {
+            base64 = componentsPNG[1]
+        } else if componentsJPEG.count == 2 {
+            base64 = componentsJPEG[1]
+        } else {
+            return nil
         }
-        return name
+        guard let imageData = Data(base64Encoded: base64), let image = UIImage(data: imageData) else {return nil}
+        return image
     }
+}
 
+struct CompressedBlobImage: Codable, Equatable {
+    
+    let blobUrl: String
+    let compressedData: Data
+    
+    private enum CodingKeys: String, CodingKey {
+        case blobUrl = "blobUrl"
+        case compressedData = "compressedData"
+    }
+    
+    init?(_ blobImage: BlobImage) {
+        guard
+            let image = blobImage.rendered(),
+            let shrinkedImage = image.resizedImage(targetSize: CGSize(width: 500.0, height: 500.0)),
+            let compressedImage = shrinkedImage.jpegData(compressionQuality: 0.5),
+            let compressedData = compressedImage.deflate()
+        else {return nil}
+        self.compressedData = compressedData
+        self.blobUrl = blobImage.blobUrl
+    }
+    
+    func rendered() -> UIImage? {
+        guard
+            let decompressedData = compressedData.inflate(),
+            let image = UIImage(data: decompressedData)
+        else {return nil}
+        return image
+    }
+}
+
+struct PartialMessage: Codable, Equatable {
+    let message: String?
+    let color: String?
+    let alpha: CGFloat?
+    let size: String?
+    let src: String?
+    
+    private enum CodingKeys: String, CodingKey {
+        case message = "message"
+        case color = "color"
+        case alpha = "alpha"
+        case size = "size"
+        case src = "src"
+    }
 }
 
 struct Chat: Codable, Equatable {
     let name: String
     let message: String
     let date: String
+    let imgURL: String?
     
     private enum CodingKeys: String, CodingKey {
         case name = "name"
         case message = "message"
         case date = "date"
+        case imgURL = "imgURL"
     }
 }
 

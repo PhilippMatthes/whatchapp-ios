@@ -19,31 +19,42 @@ class InterfaceController: WKInterfaceController {
     
     var conversations = [Chat]()
     var timer: Timer?
+    var blobImages = [CompressedBlobImage]()
+    
+    var standardReplyHandler: (([String: Any]) -> Void) = {
+        reply in
+        print(reply)
+    }
+    
+    var standardErrorHandler: ((Error) -> Void) = {
+        error in
+        print(error)
+    }
     
     @IBAction func refresh() {
         DispatchQueue.main.async{self.setTitle("Communicating...")}
         WCSession.default.sendMessage(["request": "data"], replyHandler: {
             (response) -> Void in
-            if let qrcode = response["qrcode"] as? String {
-                guard let imageData = Data(base64Encoded: qrcode), let image = UIImage(data: imageData) else {return}
-                self.showQRCode(image: image)
-            } else if let chats = response["chats"] {
-                self.handleChatResponse(chats: chats)
-            } else if let status = response["status"] as? String {
-                self.receivedStatusMessage(status)
-            }
-        }) {
-            (err) -> Void in
-            print(err)
+            self.session(WCSession.default, didReceiveMessage: response, replyHandler: self.standardReplyHandler)
+        }, errorHandler: standardErrorHandler) 
+    }
+    
+    override func willActivate() {
+        super.willActivate()
+        
+        if WCSession.isSupported() {
+            let session = WCSession.default
+            session.delegate = self
+            session.activate()
         }
     }
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
-        self.whatsappIcon.setAlpha(0.0)
-        self.table.setAlpha(0.0)
-        self.qrCodeImageView.setAlpha(0.0)
+        self.whatsappIcon.setHidden(true)
+        self.table.setHidden(true)
+        self.qrCodeImageView.setHidden(true)
         self.backgroundGroup.setBackgroundColor(.black)
         
         if WCSession.isSupported() {
@@ -52,13 +63,19 @@ class InterfaceController: WKInterfaceController {
             session.activate()
         }
         
+        if let lastUpdateData = UserDefaults.standard.object(forKey: "update") as? Data {
+            let lastUpdate = try! JSONDecoder().decode(ChatUpdate.self, from: lastUpdateData)
+            self.conversations = lastUpdate.chats
+            self.showConversations()
+        }
+        
         Timer.scheduledTimer(withTimeInterval: 60, repeats: true) {
             _ in
             if let lastUpdateData = UserDefaults.standard.object(forKey: "update") as? Data {
                 let lastUpdate = try! JSONDecoder().decode(ChatUpdate.self, from: lastUpdateData)
                 self.conversations = lastUpdate.chats
                 DispatchQueue.main.async {
-                    DispatchQueue.main.async{self.setTitle("\(lastUpdate.timeAgo())")}
+                    self.setTitle("\(lastUpdate.timeAgo())")
                 }
             }
         }
@@ -67,9 +84,9 @@ class InterfaceController: WKInterfaceController {
     func showQRCode(image: UIImage) {
         self.qrCodeImageView.setImage(image)
         self.backgroundGroup.setBackgroundColor(.white)
-        self.table.setAlpha(0.0)
-        self.qrCodeImageView.setAlpha(1.0)
-        self.whatsappIcon.setAlpha(1.0)
+        self.table.setHidden(true)
+        self.qrCodeImageView.setHidden(false)
+        self.whatsappIcon.setHidden(false)
     }
     
     func handleChatResponse(chats: Any) {
@@ -81,6 +98,7 @@ class InterfaceController: WKInterfaceController {
             self.conversations = update.chats
             showConversations()
         }
+        WKInterfaceDevice().play(.click)
         DispatchQueue.main.async{self.setTitle("Just now")}
         
         let data = try! JSONEncoder().encode(update)
@@ -88,17 +106,28 @@ class InterfaceController: WKInterfaceController {
     }
     
     func showConversations() {
-        self.table.setNumberOfRows(self.conversations.count, withRowType: "row")
+        if self.conversations.count != table.numberOfRows {
+            self.table.setNumberOfRows(self.conversations.count, withRowType: "row")
+        }
         for (i, conversation) in self.conversations.enumerated() {
             let row = table.rowController(at: i) as! ChatRowController
-            row.titleLabel.setText(conversation.name)
-            row.label.setText(conversation.message)
-            row.dateLabel.setText(conversation.date)
+            row.prepare(conversation, blobImages)
         }
         self.backgroundGroup.setBackgroundColor(.black)
-        self.table.setAlpha(1.0)
-        self.qrCodeImageView.setAlpha(0.0)
-        self.whatsappIcon.setAlpha(0.0)
+        self.table.setHidden(false)
+        self.qrCodeImageView.setHidden(true)
+        self.whatsappIcon.setHidden(true)
+    }
+    
+    func receivedBlobImage(_ data: Data) {
+        guard
+            let decompressedData = data.inflate(),
+            let compressedBlobImage = try? JSONDecoder().decode(CompressedBlobImage.self, from: decompressedData)
+            else {return}
+        if !blobImages.contains(compressedBlobImage) {
+            blobImages.append(compressedBlobImage)
+            showConversations()
+        }
     }
     
     func receivedStatusMessage(_ status: String) {
@@ -114,31 +143,23 @@ class InterfaceController: WKInterfaceController {
 
 extension InterfaceController: WCSessionDelegate {
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        NSLog("Session activation did complete with activation state: \(activationState), error: \(error)")
+        NSLog("Session activation did complete with activation state: \(activationState), error: \(String(describing: error))")
         WCSession.default.sendMessage(["request": "data"], replyHandler: {
             (response) -> Void in
-            if let qrcode = response["qrcode"] as? String {
-                guard let imageData = Data(base64Encoded: qrcode), let image = UIImage(data: imageData) else {return}
-                self.showQRCode(image: image)
-            } else if let chats = response["chats"] {
-                self.handleChatResponse(chats: chats)
-            } else if let status = response["status"] as? String {
-                self.receivedStatusMessage(status)
-            }
-        }) {
-            (err) -> Void in
-            print(err)
-        }
+            self.session(session, didReceiveMessage: response, replyHandler: self.standardReplyHandler)
+        }, errorHandler: standardErrorHandler)
     }
     
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
         if let qrcode = message["qrcode"] as? String {
             guard let imageData = Data(base64Encoded: qrcode), let image = UIImage(data: imageData) else {return}
             showQRCode(image: image)
         } else if let chats = message["chats"] {
-            self.handleChatResponse(chats: chats)
+            handleChatResponse(chats: chats)
         } else if let status = message["status"] as? String {
-            self.receivedStatusMessage(status)
+            receivedStatusMessage(status)
+        } else if let blobImage = message["blobImage"] as? Data {
+            self.receivedBlobImage(blobImage)
         }
     }
 }

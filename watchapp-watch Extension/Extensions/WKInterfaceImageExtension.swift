@@ -9,8 +9,10 @@
 import Foundation
 import WatchKit
 
-extension WKInterfaceImage {
-    public func imageFromUrl(_ urlString: String) {
+extension WKInterfaceGroup {
+    public func imageFromUrl(_ urlString: String?) {
+        
+        guard let urlString = urlString else {return}
         
         if let url = NSURL(string: urlString) {
             
@@ -23,7 +25,7 @@ extension WKInterfaceImage {
             let task = session.dataTask(with: request as URLRequest, completionHandler: {(data, response, error) in
                 if let imageData = data as Data? {
                     DispatchQueue.main.async {
-                        self.setImageData(imageData)
+                        self.setBackgroundImageData(imageData)
                         dispatchGroup.leave()
                     }
                 } else {

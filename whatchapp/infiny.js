@@ -1,6 +1,10 @@
+// var jq = document.createElement('script');
+// jq.src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js";
+// document.getElementsByTagName('head')[0].appendChild(jq);
+
 function confirmLoginOnThisDevice() {
-    let button = $("#app > div > div > div > div > div > div > div._3QNwO > div._1WZqU.PNlAR");
-    let buttonExists = button.length != 0;
+    var button = $("#app > div > div > div > div > div > div > div._3QNwO > div._1WZqU.PNlAR");
+    var buttonExists = button.length != 0;
     if (buttonExists) {
         button.click();
     }
@@ -14,23 +18,23 @@ function getQRCodeBase64() {
 function getChatDivs() {
     return $("#pane-side > div > div > div > div > div > div").sort(
                                                                     function(a, b) {
-                                                                    let aHeight = $(a).offset().top;
-                                                                    let bHeight = $(b).offset().top;
+                                                                    var aHeight = $(a).offset().top;
+                                                                    var bHeight = $(b).offset().top;
                                                                     return aHeight - bHeight;
                                                                     }
                                                                     );
 }
 
 function chatName(chatDiv) {
-    let groupChatName = $(chatDiv).find("._25Ooe > ._1wjpf").attr("title");
-    let contactChatName = $(chatDiv).find("._25Ooe > ._3TEwt > ._1wjpf").attr("title");
+    var groupChatName = $(chatDiv).find("._25Ooe > ._1wjpf").attr("title");
+    var contactChatName = $(chatDiv).find("._25Ooe > ._3TEwt > ._1wjpf").attr("title");
     if (typeof groupChatName != 'undefined') {return groupChatName;}
     else return contactChatName;
 }
 
 function chatMessage(chatDiv) {
-    let sender = $(chatDiv).find("div._3j7s9 > div._1AwDx > div._itDl > span > span._1bX-5 > span").text();
-    let text = $(chatDiv).find("div._3j7s9 > div._1AwDx > div._itDl > span").attr("title");
+    var sender = $(chatDiv).find("div._3j7s9 > div._1AwDx > div._itDl > span > span._1bX-5 > span").text();
+    var text = $(chatDiv).find("div._3j7s9 > div._1AwDx > div._itDl > span").attr("title");
     if (sender === "" || sender === undefined) {
         return text;
     } else {
@@ -38,7 +42,7 @@ function chatMessage(chatDiv) {
     }
 }
 
-function chatImage(chatDiv) {
+function chatImageURL(chatDiv) {
     return $(chatDiv).find("div.dIyEr > div > img").attr("src");
 }
 
@@ -48,10 +52,12 @@ function chatDate(chatDiv) {
 
 function getAllChats() {
     return $.map( getChatDivs(), function( val, i ) {
+                 blobToBase64(chatImageURL(val));
                  return  {
                  message: chatMessage(val),
                  name: chatName(val),
                  date: chatDate(val),
+                 imgURL: chatImageURL(val),
                  };
                  });
 }
@@ -70,26 +76,6 @@ function selectChat(chatDiv){
     triggerMouseEvent(chatDiv, "mousedown");
 }
 
-function getMessageDivs() {
-    return $("#main > div._3zJZ2 > div > div > div._9tCEa > div");
-}
-
-function getMessageFromDiv(messageDiv) {
-    var message = "";
-    $.each( $(messageDiv).find("div.copyable-text > div > span").contents(), function( index, ele ) {
-           let alt = $(ele).attr("alt");
-           if (alt !== undefined) {
-           message += $(ele).attr("alt");
-           }
-           message += $(ele).text();
-           });
-    return {
-    caption: $(messageDiv).find("div.KYpDv._3zdTI._1tq8Y.copyable-text > div > div._1RiwZ > div > span > a").text(),
-    message: message,
-    system: $(messageDiv).find("div._3_7SH.Zq3Mc > span").text(),
-    };
-}
-
 function selectChatWithName(name) {
     $.each( getChatDivs(), function( index, ele ) {
            if (chatName(ele) === name) {
@@ -98,53 +84,144 @@ function selectChatWithName(name) {
            });
 }
 
-function getAllCurrentlyShowingMessages() {
-    return $.map( getMessageDivs(), function( messageDiv, i ) {
-         return {
-             message: getMessageFromDiv(messageDiv),
-             own: $(messageDiv).find("div.message-out").length > 0,
-             quote: {
-                 message: $(messageDiv).find("span.quoted-mention").text(),
-                 author: {
-                     number: $(messageDiv).find("div > div > div > div > div._111ze > span.RZ7GO").text(),
-                     numberColor: rgb2hex($(messageDiv).find("div > div > div > div > div._111ze > span.RZ7GO").css("color")),
-                     name: $(messageDiv).find("div > div > div >div > div._111ze > span._3Ye_R").text(),
-                     contact: $(messageDiv).find("div > div > div > div > div._111ze > span._2a1Yw").text(),
-                     contactColor: rgb2hex($(messageDiv).find("div > div > div > div > div._111ze > span._2a1Yw").css("color")),
-                 }
-             },
-             author: {
-                 number: $(messageDiv).find("div._111ze > span.RZ7GO").text(),
-                 numberColor: rgb2hex($(messageDiv).find("div._111ze > span.RZ7GO").css("color")),
-                 name: $(messageDiv).find("div._111ze > span._3Ye_R").text(),
-                 contact: $(messageDiv).find("div._111ze > span._2a1Yw._1OmDL").text(),
-                 contactColor: rgb2hex($(messageDiv).find("div._111ze > span._2a1Yw").css("color")),
-             },
-         }
-     });
-}
-
 function getAllCurrentlyShowingMessagesAsJson() {
     return JSON.stringify(getAllCurrentlyShowingMessages());
 }
 
-function rgb2hex(rgb) {
-    if (rgb === undefined) return undefined;
+function sendMessage(text, chatname){
+    var name = $("#main > header > div._1WBXd > div._2EbF- > div > span").attr("title");
+    if (name != chatname) return;
     
-    if (/^#[0-9A-F]{6}$/i.test(rgb)) return rgb;
-    
-    rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
-    function hex(x) {
-        return ("0" + parseInt(x).toString(16)).slice(-2);
-    }
-    return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
-}
-
-function sendMessage(text){
-    $("#main > footer > div._3oju3 > div._2bXVy > div > div._2S1VP.copyable-text.selectable-text").text(text)
-    input = document.querySelector("#main > footer > div._3oju3 > div._2bXVy > div > div._2S1VP.copyable-text.selectable-text");
+    $("#main > footer > div._3pkkz > div._1Plpp > div > div._2S1VP.copyable-text.selectable-text").text(text);
+    var input = document.querySelector("#main > footer > div._3pkkz > div._1Plpp > div > div._2S1VP.copyable-text.selectable-text");
     input.dispatchEvent(new Event('input', {bubbles: true}));
-    var button = document.querySelector('#main > footer > div._3oju3 > button');
+    var button = document.querySelector('#main > footer > div._3pkkz > div > button');
     button.click();
 }
 
+function messageIsOwn(leaf) {
+    return $(leaf).find("div.message-out").length > 0;
+}
+
+function filterMessageFromLeaf(leaf) {
+    var message = "";
+    if ($(leaf).is('em') || ($(leaf).attr('alt') != "" && $(leaf).attr('alt') != undefined)) {
+        // If there are nested ems (system symbols) or imgs (smileys), go one
+        // layer up and add all texts and alts to one string
+        $.each( $(leaf).parent().contents(), function( index, ele ) {
+               var alt = $(ele).attr("alt");
+               if (alt !== undefined) {
+               message += $(ele).attr("alt");
+               }
+               message += $(ele).text();
+               });
+    } else {
+        // Otherwise just use the text of the element
+        message = $(leaf).text();
+    }
+    return message;
+}
+
+// Return all children of given message div
+function childrenOf(div) {
+    return $(div).find('*').map(function() {
+                                message = filterMessageFromLeaf(this);
+                                if ($(this).children().length === 0 && message != "") {
+                                return {
+                                message: message,
+                                color: rgba2hex($(this).css('color')),
+                                alpha: rgba2alpha($(this).css('color')),
+                                size: $(this).css('font-size'),
+                                };
+                                } else if ($(this).attr('src') != "" && $(this).attr('src') != undefined) {
+                                blobToBase64($(this).attr('src'));
+                                return {
+                                src: $(this).attr('src'),
+                                };
+                                }
+                                }).toArray();
+}
+
+
+// Return all visible messages in JSON format
+function allVisibleMessages() {
+    var allMessageDivs = $('#main > div._3zJZ2 > div > div > div._9tCEa > div');
+    return JSON.stringify(allMessageDivs.map( function() {
+                                             return {
+                                             'own': messageIsOwn(this),
+                                             'children': childrenOf(this),
+                                             };
+                                             }).toArray());
+}
+
+function trim (str) {
+    return str.replace(/^\s+|\s+$/gm,'');
+}
+
+//Function to convert hex format to a rgb color
+function rgba2hex(rgb){
+    if (rgb === undefined) return "#000000";
+    rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
+                    return  (rgb && rgb.length === 4) ? "#" +
+                    ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
+                    ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
+                    ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
+                    }
+                    
+                    function rgba2alpha(rgb) {
+                    var match = rgb.match(/^rgba\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3}),\s*(\d*(?:\.\d+)?)\)$/);
+                    return match ? Number(match[4]) : 1;
+                    }
+                    
+                    function blobToBase64(blobUrl) {
+                    var request = new XMLHttpRequest();
+                    request.open('GET', blobUrl, true);
+                    request.responseType = 'blob';
+                    request.onload = function() {
+                    var reader = new FileReader();
+                    reader.readAsDataURL(request.response);
+                    reader.onload =  function(e) {
+                    blobCallback(blobUrl, e.target.result);
+                    };
+                    };
+                    request.send();
+                    }
+                    
+                    function blobCallback(blobUrl, base64) {
+                    webkit.messageHandlers.blobToBase64Callback.postMessage(JSON.stringify({
+                                                                                           blobUrl: blobUrl,
+                                                                                           base64: base64,
+                                                                                           }));
+                    }
+                    
+                    function sleep(ms) {
+                    return new Promise(resolve => setTimeout(resolve, ms));
+                    }
+                    
+                    MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+                    var domChangeQueued = false;
+                    
+                    var observer = new MutationObserver(async function(mutations, observer) {
+                                                        var mutatedByJQuery = false;
+                                                        mutations.forEach(function(mutation) {
+                                                                          if (mutation.attributeName == "id") {
+                                                                          mutatedByJQuery = true;
+                                                                          }
+                                                                          });
+                                                        if (!domChangeQueued && !mutatedByJQuery) {
+                                                        domChangeQueued = true;
+                                                        await sleep(1000);
+                                                        domCallback();
+                                                        domChangeQueued = false;
+                                                        }
+                                                        });
+                    
+                    observer.observe(document.body, {
+                                     subtree: true,
+                                     attributes: true,
+                                     attributeOldValue: true,
+                                     });
+                    
+                    function domCallback() {
+                    webkit.messageHandlers.domChangedCallback.postMessage({});
+                    }
